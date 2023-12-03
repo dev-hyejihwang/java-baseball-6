@@ -1,8 +1,13 @@
 package baseball;
 
+import baseball.ui.OutputView;
+
 public class Application {
     public static void main(String[] args) {
+        OutputView outputView = new OutputView();
+
         //1. 게임 시작 문구 출력
+        outputView.printStartMessage();
 
         //2. 컴퓨터로 부터 임의의 숫자 입력 받기
 
