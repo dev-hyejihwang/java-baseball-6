@@ -3,13 +3,13 @@
 ## 숫자 야구 게임 시작 문구 출력 기능 
 ### ui.OutputView
 - printStartMessage
-    - [] '숫자 야구 게임을 시작합니다.' 문구를 출력한다.
+    - [X] '숫자 야구 게임을 시작합니다.' 문구를 출력한다.
 
 ## 컴퓨터 임의의 숫자 선택 기능 
 ### domain.Computer
 - pickRandomNumber
-    - [] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`의 `pickNumberInRange()`를 활용한다.
-    - [] 입력 받은 숫자를 int 변수에 저장한다.
+    - [X] `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`의 `pickNumberInRange()`를 활용한다.
+    - [X] 입력 받은 숫자를 int 변수에 저장한다.
 
 ## 게임 플레이어 숫자 입력 기능 
 ### domain.Player
