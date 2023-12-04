@@ -13,10 +13,12 @@
 
 ## 게임 플레이어 숫자 입력 기능 
 ### domain.Player
-- inputPlayerNumber
-    - [] 게임 플레이어로 부터 3자리 숫자를 입력 받아 int 변수에 저장한다.
-    - [] 입력 받은 값이 숫자인지 체크 후 숫자가 아니면 예외를 발생시킨다.
+- validatePlayerNumber
+    - [X] 입력 받은 값이 숫자인지 체크 후 숫자가 아니면 예외를 발생시킨다.
     - [] 입력 받은 값이 3자리인지 체크 후 3자리가 아니면 예외를 발생시킨다.
+### ui.InputView
+- inputPlayerNumber
+    - [X] 게임 플레이어로 부터 3자리 숫자를 입력 받아 int 변수에 저장한다.
 
 ## 스트라이크 개수 체크 기능 
 ### domain.Judge

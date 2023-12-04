@@ -1,6 +1,7 @@
 package baseball;
 
 import baseball.domain.Computer;
+import baseball.domain.Player;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
 
@@ -17,6 +18,8 @@ public class Application {
         int pickRandomNumber = computer.pickRandomNumber();
 
         //3. 게임 플레이어 숫자 입력
+        Player player = new Player(inputView);
+        player.process();
 
         //4. 심판 결과 해석
 
