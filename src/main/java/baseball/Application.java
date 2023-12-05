@@ -19,7 +19,7 @@ public class Application {
 
         //3. 게임 플레이어 숫자 입력
         Player player = new Player(inputView);
-        player.process();
+        int playerNumber = player.getPlayerNumber();
 
         //4. 심판 결과 해석
 

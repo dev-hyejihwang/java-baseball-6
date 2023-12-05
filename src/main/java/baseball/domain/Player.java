@@ -1,8 +1,6 @@
 package baseball.domain;
 
-import baseball.error.ErrorCode;
 import baseball.ui.InputView;
-import camp.nextstep.edu.missionutils.Console;
 
 import static baseball.error.ErrorCode.INVALID_INPUT_DIGIT;
 import static baseball.error.ErrorCode.INVALID_INPUT_NUMBER;
@@ -16,9 +14,8 @@ public class Player {
     public Player(InputView inputView) {
         this.inputView = inputView;
     }
-    public void process(){
-        int playerNumber = validatePlayerNumber();
-
+    public int getPlayerNumber(){
+        return validatePlayerNumber();
     }
 
     private int validatePlayerNumber() {
