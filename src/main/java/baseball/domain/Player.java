@@ -1,7 +1,11 @@
 package baseball.domain;
 
+import baseball.error.ErrorCode;
 import baseball.ui.InputView;
 import camp.nextstep.edu.missionutils.Console;
+
+import static baseball.error.ErrorCode.INVALID_INPUT_DIGIT;
+import static baseball.error.ErrorCode.INVALID_INPUT_NUMBER;
 
 public class Player {
     //3. 게임 플레이어 숫자 입력
@@ -19,10 +23,18 @@ public class Player {
 
     private int validatePlayerNumber() {
         try{
-            Integer.parseInt(inputView.inputPlayerNumber());
+            String inputNumber= inputView.inputPlayerNumber();
+            int playerNumber = Integer.parseInt(inputNumber);
+            checkNumberDigit(inputNumber);
+            return playerNumber;
         }catch (NumberFormatException numberFormatException){
-            throw new IllegalArgumentException("숫자를 입력해주세요.");
+            throw new IllegalArgumentException(INVALID_INPUT_NUMBER.getMessage());
         }
-        return 0;
+    }
+
+    private void checkNumberDigit(String inputNumber) {
+        if(inputNumber.length() != 3){
+            throw new IllegalArgumentException(INVALID_INPUT_DIGIT.getMessage());
+        }
     }
 }

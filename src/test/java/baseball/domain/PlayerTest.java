@@ -22,6 +22,15 @@ class PlayerTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("입력 받은 값이 3자리 숫자가 아닌 경우 예외가 발생한다.")
+    void digitErrorTest(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("1234"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         player.process();
