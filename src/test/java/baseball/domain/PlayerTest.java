@@ -33,6 +33,6 @@ class PlayerTest extends NsTest {
 
     @Override
     public void runMain() {
-        player.process();
+        player.getPlayerNumber();
     }
 }
