@@ -1,20 +1,19 @@
 package baseball.domain;
 
-import baseball.ui.InputView;
+import baseball.ui.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class JudgeTest extends NsTest {
 
+    OutputView outputView = new OutputView();
     @Test
     @DisplayName("입력 받은 값이 숫자가 아닌 경우 예외가 발생한다.")
     void notNumberTest(){
-        Judge judge = new Judge(480, 123);
+        Judge judge = new Judge(outputView, 480, 123);
         judge.process();
     }
 
@@ -22,7 +21,7 @@ class JudgeTest extends NsTest {
 
     @Override
     public void runMain() {
-        Judge judge = new Judge(123, 123);
+        Judge judge = new Judge(outputView, 123, 123);
         judge.process();
     }
 }

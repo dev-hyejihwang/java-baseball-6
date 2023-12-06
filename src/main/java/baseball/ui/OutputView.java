@@ -8,8 +8,21 @@ public class OutputView {
 
     //5. 게임 결과 출력
     //5-1. 게임 결과 출력
-    //5-2. 3스트라이크가 아닌 경우 게임 반복
-    //5-3. 3스트라이크인 경우 게임 종료 여부 체크
+    public void printGameResult(int strikeCount, int ballCount) {
+        if(strikeCount == 0 && ballCount == 0){
+            System.out.println("낫싱");
+            return;
+        }
+
+        if(ballCount > 0){
+            System.out.println(ballCount + "볼\n");
+        }
+        if(strikeCount > 0){
+            System.out.println(strikeCount + "스트라이크");
+        }
+    }
+
+
 
     //6. 게임 종료 여부 입력
     //6-1. 종료 여부 메세지 출력

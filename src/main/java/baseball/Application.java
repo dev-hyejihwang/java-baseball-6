@@ -23,7 +23,7 @@ public class Application {
         int playerNumber = player.getPlayerNumber();
 
         //4. 심판 결과 해석
-        Judge judge = new Judge(pickRandomNumber, playerNumber);
+        Judge judge = new Judge(outputView, pickRandomNumber, playerNumber);
         judge.process();
 
         //5. 게임 결과 출력
