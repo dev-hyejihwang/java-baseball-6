@@ -6,6 +6,7 @@ public class OutputView {
     //1. 게임 시작 문구 출력
     public void printStartMessage(){
         System.out.println("숫자 야구 게임을 시작합니다.");
+        System.out.println("숫자를 입력해주세요. : ");
     }
 
     //5. 게임 결과 출력
@@ -25,12 +26,12 @@ public class OutputView {
     }
 
 
+    public void printContinue() {
+        //6-1. 종료 여부 메세지 출력
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
 
-    //6. 게임 종료 여부 입력
-    //6-1. 종료 여부 메세지 출력
-    //6-2. 종료 여부 숫자 입력 받기
-    //6-3. 입력 값이 숫자인지 체크
-    //6-4. 입력 값이 1,2 인지 체크
-    //6-5. 입력 값이 1인 경우 재시작
-    //6-6. 입력 값이 2인 경우 게임 종료
+
+
 }

@@ -4,6 +4,8 @@ import baseball.ui.OutputView;
 
 public class Judge {
 
+    private static final int GAME_CONTINUE_Y = 1;
+    private static final int ALL_STRIKE = 3;
     private Player player;
     private OutputView outputView;
     private Result result;
@@ -20,8 +22,8 @@ public class Judge {
         //4. 심판 결과 해석
         String inputComputer = String.valueOf(computerNumber);
 
-        boolean gameWinYN = false;
-        while (!gameWinYN){
+        boolean gameContinueYN = true;
+        while (gameContinueYN){
             String inputPlayer = String.valueOf(player.getPlayerNumber());
             judge(inputComputer, inputPlayer);
 
@@ -29,15 +31,15 @@ public class Judge {
             outputView.printGameResult(result);
 
             //5-2. 3스트라이크가 아닌 경우 게임 반복
-            gameWinYN = getGameWinYN();
+            gameContinueYN = getGameWinYN();
+
+            //5-3. 3스트라이크인 경우 게임 종료 여부 체크
+            if(!gameContinueYN){
+                gameContinueYN = gameContinueProcess();
+            }
         }
-
-
-
-
-
-
     }
+
 
     private void judge(String inputComputer, String inputPlayer) {
         for (int i = 0; i < inputComputer.length(); i++) {
@@ -86,9 +88,28 @@ public class Judge {
     }
 
     private boolean getGameWinYN() {
-        if(result.getStrikeCount() == 3){
+        if(result.getStrikeCount() == ALL_STRIKE){
+            return false;
+        }
+        return true;
+    }
+
+    private boolean gameContinueProcess() {
+        outputView.printContinue();
+        //6-2. 종료 여부 숫자 입력 받기
+        int continueNumber = player.getContinueNumber();
+
+        //6-4. 입력 값이 1,2 인지 체크
+        //6-5. 입력 값이 1인 경우 재시작
+        //6-6. 입력 값이 2인 경우 게임 종료
+        return getContinueYN(continueNumber);
+    }
+
+    private boolean getContinueYN(int continueNumber) {
+        if(continueNumber == GAME_CONTINUE_Y){
             return true;
         }
         return false;
     }
+
 }

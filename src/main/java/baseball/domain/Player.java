@@ -34,4 +34,13 @@ public class Player {
             throw new IllegalArgumentException(INVALID_INPUT_DIGIT.getMessage());
         }
     }
+
+    public int getContinueNumber(){
+        //6-3. 입력 값이 숫자인지 체크
+        try{
+            return Integer.parseInt(inputView.inputPlayerNumber());
+        }catch (NumberFormatException numberFormatException){
+            throw new IllegalArgumentException(INVALID_INPUT_NUMBER.getMessage());
+        }
+    }
 }

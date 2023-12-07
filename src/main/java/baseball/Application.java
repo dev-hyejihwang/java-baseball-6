@@ -29,8 +29,9 @@ public class Application {
         judge.process();
 
         //5. 게임 결과 출력
-        //5-3. 3스트라이크인 경우 게임 종료 여부 체크
+
 
         //6. 게임 종료 여부 입력
+
     }
 }
