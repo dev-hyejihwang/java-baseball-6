@@ -1,5 +1,7 @@
 package baseball.ui;
 
+import baseball.domain.Result;
+
 public class OutputView {
     //1. 게임 시작 문구 출력
     public void printStartMessage(){
@@ -8,17 +10,17 @@ public class OutputView {
 
     //5. 게임 결과 출력
     //5-1. 게임 결과 출력
-    public void printGameResult(int strikeCount, int ballCount) {
-        if(strikeCount == 0 && ballCount == 0){
+    public void printGameResult(Result result) {
+        if(result.getStrikeCount() == 0 && result.getBallCount() == 0){
             System.out.println("낫싱");
             return;
         }
 
-        if(ballCount > 0){
-            System.out.println(ballCount + "볼\n");
+        if(result.getBallCount() > 0){
+            System.out.println(result.getBallCount() + "볼 ");
         }
-        if(strikeCount > 0){
-            System.out.println(strikeCount + "스트라이크");
+        if(result.getStrikeCount() > 0){
+            System.out.println(result.getStrikeCount() + "스트라이크");
         }
     }
 

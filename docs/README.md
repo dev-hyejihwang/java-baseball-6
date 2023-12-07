@@ -30,6 +30,10 @@
 - getBallCount
     - [X] 컴퓨터의 숫자를 반복하며 게임 플레이어의 숫자에 해당 값이 있는 경우 count++ 처리한다.
 
+## 게임 반복 기능
+### domain.Judge
+- [X] 3스트라이크가 될 때까지 게임을 반복한다.
+
 ## 게임 결과 출력 기능 
 ### ui.OutputView
 - printGameResult
