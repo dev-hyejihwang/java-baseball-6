@@ -7,6 +7,8 @@ import baseball.domain.Result;
 import baseball.ui.InputView;
 import baseball.ui.OutputView;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -18,7 +20,7 @@ public class Application {
 
         //2. 컴퓨터로 부터 임의의 숫자 입력 받기
         Computer computer = new Computer();
-        int pickRandomNumber = computer.pickRandomNumber();
+        List<Integer> pickRandomNumber = computer.pickRandomNumber();
 
         //3. 게임 플레이어 숫자 입력
         Player player = new Player(inputView);

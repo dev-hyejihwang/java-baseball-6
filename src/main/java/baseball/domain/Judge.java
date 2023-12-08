@@ -2,6 +2,8 @@ package baseball.domain;
 
 import baseball.ui.OutputView;
 
+import java.util.List;
+
 public class Judge {
 
     private static final int GAME_CONTINUE_Y = 1;
@@ -9,23 +11,22 @@ public class Judge {
     private Player player;
     private OutputView outputView;
     private Result result;
-    private int computerNumber;
+    private List<Integer> computerNumbers;
 
-    public Judge(Player player, OutputView outputView, Result result, int pickRandomNumber) {
+    public Judge(Player player, OutputView outputView, Result result, List<Integer> pickRandomNumbers) {
         this.player = player;
         this.outputView = outputView;
         this.result = result;
-        this.computerNumber = pickRandomNumber;
+        this.computerNumbers = pickRandomNumbers;
     }
 
     public void process() {
         //4. 심판 결과 해석
-        String inputComputer = String.valueOf(computerNumber);
-
         boolean gameContinueYN = true;
         while (gameContinueYN){
             String inputPlayer = String.valueOf(player.getPlayerNumber());
-            judge(inputComputer, inputPlayer);
+            judge(inputPlayer);
+
 
             //4.3. 게임 결과 출력을 위해 결과 전달
             outputView.printGameResult(result);
@@ -40,14 +41,14 @@ public class Judge {
         }
     }
 
-
-    private void judge(String inputComputer, String inputPlayer) {
-        for (int i = 0; i < inputComputer.length(); i++) {
-            String computerCharNumber = String.valueOf(inputComputer.charAt(i));
+    private void judge(String inputPlayer) {
+        for (int i = 0; i < computerNumbers.size(); i++) {
+            String computerNumber = computerNumbers.get(i).toString();
+            System.out.println(computerNumber);
             for (int j = 0; j < inputPlayer.length(); j++) {
                 String playerCharNumber = String.valueOf(inputPlayer.charAt(j));
                 boolean sameDigitYN = getSameDigitYN(i,j);
-                boolean sameNumberYN = getSameNumberYN(computerCharNumber, playerCharNumber);
+                boolean sameNumberYN = getSameNumberYN(computerNumber, playerCharNumber);
                 //4-1. 스타라이크 개수 체크
                 if(sameNumberYN){
                     addStrikeCount(sameDigitYN);
@@ -74,7 +75,7 @@ public class Judge {
     }
     private void addBallCount(boolean sameDigitYN) {
         int ballCount = result.getBallCount();
-        if (sameDigitYN) {
+        if (!sameDigitYN) {
             ballCount++;
             result.setBallCount(ballCount);
         }
