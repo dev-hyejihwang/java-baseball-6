@@ -6,7 +6,10 @@ public class OutputView {
     //1. 게임 시작 문구 출력
     public void printStartMessage(){
         System.out.println("숫자 야구 게임을 시작합니다.");
-        System.out.println("숫자를 입력해주세요. : ");
+    }
+
+    public void printInputPlayerMessage(){
+        System.out.println("숫자를 입력해주세요 : ");
     }
 
     //5. 게임 결과 출력

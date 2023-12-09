@@ -1,13 +1,17 @@
 package baseball.domain;
 
+import baseball.error.ErrorCode;
 import baseball.ui.OutputView;
 
 import java.util.List;
+
+import static baseball.error.ErrorCode.INVALID_INPUT_RANGE;
 
 public class Judge {
 
     private static final int RESULT_RESET = 0;
     private static final int GAME_CONTINUE_Y = 1;
+    private static final int GAME_CONTINUE_N = 2;
     private static final int ALL_STRIKE = 3;
 
     private Player player;
@@ -22,11 +26,12 @@ public class Judge {
         this.computerNumbers = pickRandomNumbers;
     }
 
-    public void process() {
+    public boolean process() {
         //4. 심판 결과 해석
         boolean gameContinueYN = true;
         while (gameContinueYN){
             resetResultCount();
+            outputView.printInputPlayerMessage();
             String inputPlayer = String.valueOf(player.getPlayerNumber());
             judge(inputPlayer);
 
@@ -36,11 +41,10 @@ public class Judge {
             //5-2. 3스트라이크가 아닌 경우 게임 반복
             gameContinueYN = getGameWinYN();
 
-            //5-3. 3스트라이크인 경우 게임 종료 여부 체크
-            if(!gameContinueYN){
-                gameContinueYN = gameContinueProcess();
-            }
         }
+
+        //5-3. 3스트라이크인 경우 게임 종료 여부 체크
+        return gameContinueProcess();
     }
 
     private void resetResultCount() {
@@ -108,6 +112,10 @@ public class Judge {
         int continueNumber = player.getContinueNumber();
 
         //6-4. 입력 값이 1,2 인지 체크
+        if(continueNumber != GAME_CONTINUE_Y && continueNumber != GAME_CONTINUE_N){
+            throw new IllegalArgumentException(INVALID_INPUT_RANGE.getMessage());
+        }
+
         //6-5. 입력 값이 1인 경우 재시작
         //6-6. 입력 값이 2인 경우 게임 종료
         return getContinueYN(continueNumber);
