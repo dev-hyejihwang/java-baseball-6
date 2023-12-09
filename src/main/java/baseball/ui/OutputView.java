@@ -18,7 +18,7 @@ public class OutputView {
         }
 
         if(result.getBallCount() > 0){
-            System.out.println(result.getBallCount() + "볼 ");
+            System.out.print(result.getBallCount() + "볼 ");
         }
 
         if(result.getStrikeCount() > 0){
@@ -29,5 +29,9 @@ public class OutputView {
     public void printContinue() {
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+    }
+
+    public void printEndMessage() {
+        System.out.println("게임 종료");
     }
 }

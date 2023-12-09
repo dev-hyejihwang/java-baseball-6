@@ -17,13 +17,14 @@ public class Application {
         Computer computer = new Computer();
         Player player = new Player(inputView);
 
-        outputView.printStartMessage();
-
         boolean gameRestartYN = true;
         while(gameRestartYN){
+            outputView.printStartMessage();
             List<Integer> pickRandomNumber = computer.pickRandomNumber();
             Judge judge = new Judge(player, outputView, result, pickRandomNumber);
             gameRestartYN = judge.process();
         }
+
+        outputView.printEndMessage();
     }
 }
