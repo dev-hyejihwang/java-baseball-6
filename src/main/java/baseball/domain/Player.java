@@ -6,14 +6,12 @@ import static baseball.error.ErrorCode.INVALID_INPUT_DIGIT;
 import static baseball.error.ErrorCode.INVALID_INPUT_NUMBER;
 
 public class Player {
-    //3. 게임 플레이어 숫자 입력
-    //3-1. 3자리 숫자 입력 받기
-    //3-2. 입력 값이 숫자인지 체크
-    //3-3. 입력 값이 3자리인지 체크
     InputView inputView;
+
     public Player(InputView inputView) {
         this.inputView = inputView;
     }
+
     public int getPlayerNumber(){
         return validatePlayerNumber();
     }
@@ -36,7 +34,6 @@ public class Player {
     }
 
     public int getContinueNumber(){
-        //6-3. 입력 값이 숫자인지 체크
         try{
             return Integer.parseInt(inputView.inputPlayerNumber());
         }catch (NumberFormatException numberFormatException){
