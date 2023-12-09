@@ -6,8 +6,10 @@ import java.util.List;
 
 public class Judge {
 
+    private static final int RESULT_RESET = 0;
     private static final int GAME_CONTINUE_Y = 1;
     private static final int ALL_STRIKE = 3;
+
     private Player player;
     private OutputView outputView;
     private Result result;
@@ -24,9 +26,9 @@ public class Judge {
         //4. 심판 결과 해석
         boolean gameContinueYN = true;
         while (gameContinueYN){
+            resetResultCount();
             String inputPlayer = String.valueOf(player.getPlayerNumber());
             judge(inputPlayer);
-
 
             //4.3. 게임 결과 출력을 위해 결과 전달
             outputView.printGameResult(result);
@@ -39,6 +41,11 @@ public class Judge {
                 gameContinueYN = gameContinueProcess();
             }
         }
+    }
+
+    private void resetResultCount() {
+        result.setStrikeCount(RESULT_RESET);
+        result.setStrikeCount(RESULT_RESET);
     }
 
     private void judge(String inputPlayer) {
