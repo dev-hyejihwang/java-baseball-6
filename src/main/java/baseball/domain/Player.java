@@ -6,6 +6,7 @@ import static baseball.error.ErrorCode.INVALID_INPUT_DIGIT;
 import static baseball.error.ErrorCode.INVALID_INPUT_NUMBER;
 
 public class Player {
+    private static final int PLAYER_NUMBER_SIZE = 3;
     InputView inputView;
 
     public Player(InputView inputView) {
@@ -28,7 +29,7 @@ public class Player {
     }
 
     private void checkNumberDigit(String inputNumber) {
-        if(inputNumber.length() != 3){
+        if(inputNumber.length() != PLAYER_NUMBER_SIZE){
             throw new IllegalArgumentException(INVALID_INPUT_DIGIT.getMessage());
         }
     }

@@ -2,6 +2,7 @@ package baseball.domain;
 
 import baseball.ui.OutputView;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static baseball.error.ErrorCode.INVALID_INPUT_RANGE;
 
@@ -39,24 +40,25 @@ public class Judge {
 
     private void resetResultCount() {
         result.setStrikeCount(RESULT_RESET);
-        result.setStrikeCount(RESULT_RESET);
+        result.setBallCount(RESULT_RESET);
     }
 
     private void judge(String inputPlayer) {
-        for (int i = 0; i < computerNumbers.size(); i++) {
-            String computerNumber = computerNumbers.get(i).toString();
+        IntStream.range(0, computerNumbers.size()).forEach(idx
+                -> compareNumbers(idx, computerNumbers.get(idx), inputPlayer));
+    }
 
-            for (int j = 0; j < inputPlayer.length(); j++) {
-                String playerCharNumber = String.valueOf(inputPlayer.charAt(j));
-                boolean sameDigitYN = getSameDigitYN(i,j);
-                boolean sameNumberYN = getSameNumberYN(computerNumber, playerCharNumber);
+    private void compareNumbers(int computerIdx, int computerNumber, String playerNumbers){
+        IntStream.range(0, playerNumbers.length()).forEach(playerIdx -> {
+            String playerCharNumber = String.valueOf(playerNumbers.charAt(playerIdx));
+            boolean sameDigitYN = getSameDigitYN(computerIdx,playerIdx);
+            boolean sameNumberYN = getSameNumberYN(String.valueOf(computerNumber), playerCharNumber);
 
-                if(sameNumberYN){
-                    addStrikeCount(sameDigitYN);
-                    addBallCount(sameDigitYN);
-                }
+            if(sameNumberYN){
+                addStrikeCount(sameDigitYN);
+                addBallCount(sameDigitYN);
             }
-        }
+        });
     }
 
     private boolean getSameDigitYN(int i, int j) {
